@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online Shopping</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      color: #1b1b1b;
+      background: radial-gradient(circle at 20% 0%, #ffd6e7 0%, rgba(255,214,231,0) 55%),
+                  radial-gradient(circle at 100% 10%, #d6f3ff 0%, rgba(214,243,255,0) 55%),
+                  linear-gradient(135deg, #f8f9ff 0%, #ffffff 55%, #f2fbff 100%);
+      min-height: 100vh;
+    }
+
+
+    header {
+      background: #da8dcb;
+      color: #fff;
+      padding: 16px;
+      text-align: center;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+      padding: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    section {
+      background: #fff;
+      padding: 14px;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .products {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .product {
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #fafafa;
+    }
+
+    .product .name {
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 6px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .row input[type="number"] {
+      width: 70px;
+      padding: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #aa1caa;
+      color: #fff;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #084fae;
+    }
+
+    .bill-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .bill-table th, .bill-table td {
+      padding: 8px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+
+    .total {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      color: #d25d5d;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #cb6f6f;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Online Shopping</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Products</h2>
+
+      <div class="products">
+        <article class="product">
+          <img alt="Headphones" src="head.jpg" loading="lazy" />
+          <div class="name">Headphones</div>
+          <div>Price: ₹ <span class="price" data-price="799">799</span></div>
+          <div class="row">
+            <label>Qty</label>
+            <input min="0" type="number" class="qty" data-price="799" value="0" />
+          </div>
+        </article>
+
+        <article class="product">
+          <img alt="Smart Watch" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&h=260&q=60" loading="lazy" />
+          <div class="name">Smart Watch</div>
+          <div>Price: ₹ <span class="price" data-price="1299">1299</span></div>
+          <div class="row">
+            <label>Qty</label>
+            <input min="0" type="number" class="qty" data-price="1299" value="0" />
+          </div>
+        </article>
+
+        <article class="product">
+          <img alt="Backpack" src="bag.jpg" loading="lazy" />
+          <div class="name">Backpack</div>
+          <div>Price: ₹ <span class="price" data-price="999">999</span></div>
+          <div class="row">
+            <label>Qty</label>
+            <input min="0" type="number" class="qty" data-price="999" value="0" />
+          </div>
+        </article>
+
+        <article class="product">
+          <img alt="Keyboard" src="key.jpg" loading="lazy" />
+          <div class="name">Keyboard</div>
+          <div>Price: ₹ <span class="price" data-price="699">699</span></div>
+          <div class="row">
+            <label>Qty</label>
+            <input min="0" type="number" class="qty" data-price="699" value="0" />
+          </div>
+        </article>
+
+        <article class="product">
+          <img alt="Mouse" src="m.jpg" loading="lazy" />
+          <div class="name">Mouse</div>
+          <div>Price: ₹ <span class="price" data-price="299">299</span></div>
+          <div class="row">
+            <label>Qty</label>
+            <input min="0" type="number" class="qty" data-price="299" value="0" />
+          </div>
+        </article>
+
+        <article class="product">
+          <img alt="Phone Cover" src="c.jpg" loading="lazy" />
+          <div class="name">Phone Cover</div>
+          <div>Price: ₹ <span class="price" data-price="199">199</span></div>
+          <div class="row">
+            <label>Qty</label>
+            <input min="0" type="number" class="qty" data-price="199" value="0" />
+          </div>
+        </article>
+      </div>
+
+    </section>
+
+    <section>
+      <h2>Your Bill</h2>
+      <div class="note">
+        <b>GST: 18%</b>
+        <br />
+      </div>
+
+      <table class="bill-table" aria-label="Bill details">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Amount (₹)</th>
+          </tr>
+        </thead>
+        <tbody id="billBody">
+        </tbody>
+      </table>
+
+      <p style="margin-top: 12px;">
+        Subtotal: ₹ <span id="subtotal">0</span>
+        <br />
+        GST (18%): ₹ <span id="gstAmount">0</span>
+        <br />
+        <span class="total">Total: ₹ <span id="grandTotal">0</span></span>
+      </p>
+
+      <button type="button" id="calcBtn">Calculate Bill</button>
+      <button type="button" id="resetBtn" style="background:#6c757d; margin-top:8px;">Reset</button>
+
+      <p class="note" id="message" style="margin-top:12px;"></p>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; Ayush Aswale 24070521009</small>
+  </footer>
+
+  <script>
+
+    const gstRate = 0.18;
+
+    const billBody = document.getElementById('billBody');
+    const subtotalEl = document.getElementById('subtotal');
+    const gstAmountEl = document.getElementById('gstAmount');
+    const grandTotalEl = document.getElementById('grandTotal');
+    const messageEl = document.getElementById('message');
+    
+
+
+
+    const qtyInputs = Array.from(document.querySelectorAll('.qty'));
+    const productArticles = Array.from(document.querySelectorAll('.product'));
+
+    function money(n) {
+      return Number(n).toFixed(2);
+    }
+
+    function calculateBill() {
+      billBody.innerHTML = '';
+      messageEl.textContent = '';
+
+      let subtotal = 0;
+
+      productArticles.forEach((article) => {
+        const name = article.querySelector('.name').textContent.trim();
+        const qtyInput = article.querySelector('.qty');
+        const price = Number(qtyInput.getAttribute('data-price'));
+        const qty = Number(qtyInput.value || 0);
+
+        const amount = price * qty;
+        subtotal += amount;
+
+        if (qty > 0) {
+          const tr = document.createElement('tr');
+
+          const tdName = document.createElement('td');
+          tdName.textContent = name;
+
+          const tdQty = document.createElement('td');
+          tdQty.textContent = qty;
+
+          const tdAmount = document.createElement('td');
+          tdAmount.textContent = money(amount);
+          tdAmount.style.textAlign = 'right';
+
+          tr.appendChild(tdName);
+          tr.appendChild(tdQty);
+          tr.appendChild(tdAmount);
+
+          billBody.appendChild(tr);
+        }
+      });
+
+      const gstAmount = subtotal * gstRate;
+      const grandTotal = subtotal + gstAmount;
+
+      subtotalEl.textContent = money(subtotal);
+      gstAmountEl.textContent = money(gstAmount);
+      grandTotalEl.textContent = money(grandTotal);
+
+      if (subtotal === 0) {
+        messageEl.textContent = 'Select quantity for at least one product.';
+      } else {
+        messageEl.textContent = 'Bill calculated successfully.';
+      }
+    }
+
+    function resetAll() {
+      qtyInputs.forEach((inp) => (inp.value = 0));
+      billBody.innerHTML = '';
+      subtotalEl.textContent = '0';
+      gstAmountEl.textContent = '0';
+      grandTotalEl.textContent = '0';
+      messageEl.textContent = '';
+    }
+
+    document.getElementById('calcBtn').addEventListener('click', calculateBill);
+    document.getElementById('resetBtn').addEventListener('click', resetAll);
+  </script>
+</body>
+</html>
+

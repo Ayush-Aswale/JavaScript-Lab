@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GST Billing Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>GST Billing Calculator</h1>
+
+    <section class="card">
+      <div class="grid">
+        <label>
+          Customer Name
+          <input id="name" type="text" placeholder="Enter customer name" autocomplete="off" />
+        </label>
+
+        <label>
+          Product
+          <input id="product" type="text" placeholder="Enter product name" autocomplete="off" />
+        </label>
+
+        <label>
+          Price (₹)
+          <input id="price" type="number" min="0" step="0.01" placeholder="e.g. 199.99" />
+        </label>
+
+        <label>
+          Quantity
+          <input id="quantity" type="number" min="1" step="1" placeholder="e.g. 2" />
+        </label>
+      </div>
+
+      <div class="grid">
+        <label>
+          Discount (%)
+          <input id="discount" type="number" min="0" step="0.01" placeholder="e.g. 5" />
+        </label>
+        <label class="help">
+          (Applied on Subtotal)
+          <span>Optional</span>
+        </label>
+      </div>
+
+      <button class="btn" type="button" onclick="calculateBill()">Calculate Bill</button>
+    </section>
+
+
+    <section id="output" class="card output" aria-live="polite"></section>
+  </main>
+
+  <footer class="footer">
+    <p>
+      This website is made by Ayush Aswale V sem PRN: 24070521009, Section A
+    </p>
+  </footer>
+
+  <script src="bill.js"></script>
+</body>
+</html>
+
