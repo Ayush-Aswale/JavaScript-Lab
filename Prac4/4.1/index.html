@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Palindrome Checker | Ayush Aswale</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      padding: 40px 35px;
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+    }
+
+    .student-info {
+      background: linear-gradient(135deg, #ffd700, #ff8c00);
+      border-radius: 12px;
+      padding: 18px 14px;
+      margin-bottom: 25px;
+      box-shadow: 0 6px 18px rgba(255, 140, 0, 0.4);
+    }
+
+    .student-info h2 {
+      font-size: 1.6rem;
+      color: #1a1a2e;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .student-info p {
+      font-size: 1.15rem;
+      color: #1a1a2e;
+      font-weight: 700;
+      margin-top: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #777;
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 1.1rem;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.3s;
+      margin-bottom: 15px;
+    }
+
+    input[type="text"]:focus {
+      border-color: #667eea;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.45);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    #error {
+      color: #e74c3c;
+      font-weight: 600;
+      min-height: 20px;
+      margin-bottom: 8px;
+    }
+
+    #result {
+      font-size: 1.4rem;
+      font-weight: 700;
+      min-height: 40px;
+      padding: 10px;
+      border-radius: 10px;
+      background: #f4f6fb;
+      margin-bottom: 12px;
+      word-break: break-word;
+    }
+
+    .counter-info {
+      color: #999;
+      font-size: 0.85rem;
+    }
+
+    footer {
+      margin-top: 20px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    footer strong {
+      color: #ffd700;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="student-info">
+      <h2>Made by: Ayush Aswale</h2>
+      <p>PRN: 24070521009</p>
+    </div>
+
+    <h1>Palindrome Checker</h1>
+    <p class="subtitle">Enter a word or phrase to test it</p>
+
+    <input type="text" id="wordInput" placeholder="e.g. racecar, A man a plan a canal Panama" />
+
+    <button onclick="checkPalindrome()">Check</button>
+
+    <div id="error"></div>
+    <div id="result"></div>
+    <p class="counter-info">Checks performed: <span id="checkCount">0</span></p>
+  </div>
+
+  <footer>
+    Developed by <strong>Ayush Aswale</strong> &nbsp;|&nbsp; PRN: <strong>24070521009</strong>
+  </footer>
+
+  <script>
+    function isPalindrome(word) {
+      var reversed = word.split("").reverse().join("");
+      return word === reversed;
+    }
+
+    var cleanWord = function (word) {
+      return word.toLowerCase().replace(/[^a-z0-9]/g, "");
+    };
+
+    var showResult = (message) => {
+      document.getElementById("error").innerText = "";
+      document.getElementById("result").innerText = message;
+    };
+
+    function makeCounter() {
+      var count = 0;
+      return function () {
+        count++;
+        return count;
+      };
+    }
+    var counter = makeCounter();
+
+    function checkPalindrome() {
+      try {
+        var input = document.getElementById("wordInput").value;
+
+        if (input.trim() === "") {
+          throw new Error("Please enter a word!");
+        }
+
+        var cleaned = cleanWord(input);
+        var result = isPalindrome(cleaned);
+
+        if (result) {
+          showResult('"' + input + '" is a Palindrome! ');
+        } else {
+          showResult('"' + input + '" is NOT a Palindrome ');
+        }
+
+        document.getElementById("checkCount").innerText = counter();
+
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+  </script>
+</body>
+</html>
+

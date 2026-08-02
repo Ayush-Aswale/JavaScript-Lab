@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Indian Vehicle Registration Number Checker — validate and verify Indian number plates.">
+    <title>Indian Number Plate Checker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Animated background -->
+    <div class="bg" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <main class="app">
+
+        <!-- Tricolor accent -->
+        <div class="tricolor" aria-hidden="true"><span></span><span></span><span></span></div>
+
+        <!-- Header -->
+        <header class="hero">
+            <div class="logo-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2.5" y="5.5" width="19" height="13" rx="3"/>
+                    <circle cx="6.2" cy="12" r="0.6" fill="currentColor" stroke="none"/>
+                    <circle cx="17.8" cy="12" r="0.6" fill="currentColor" stroke="none"/>
+                    <path d="M9.2 10h2.4M9.2 12.4h4.6M9.2 14.8h3.2"/>
+                </svg>
+            </div>
+            <h1 class="title">Number Plate <span>Checker</span></h1>
+            <p class="subtitle">Validate &amp; verify Indian vehicle registration numbers</p>
+        </header>
+
+        <!-- Main card -->
+        <section class="card">
+            <label class="field-label" for="regInput">Registration number</label>
+
+            <div class="input-wrap">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                    <rect x="2.5" y="7" width="19" height="10" rx="2"/>
+                    <path d="M6.5 11.5h2.6M11 11.5h4M16.8 11.5h0.8"/>
+                </svg>
+                <input id="regInput" type="text" placeholder="MH12AB1234" maxlength="10"
+                       autocomplete="off" spellcheck="false" aria-label="Vehicle registration number">
+                <span id="charCount" class="char-count">0/10</span>
+            </div>
+
+            <p class="format-hint">Format : State (2) + District (2) + Series (2) + Number (4) &nbsp;·&nbsp; e.g. MH 12 AB 1234</p>
+
+            <button id="validateBtn" class="validate-btn" type="button">Validate</button>
+
+            <ul class="rules">
+                <li id="rule1" class="rule-item"><span>Registration number is not empty</span></li>
+                <li id="rule2" class="rule-item"><span>Length is exactly 10 characters</span></li>
+                <li id="rule3" class="rule-item"><span>State Code — first 2 characters are uppercase letters</span></li>
+                <li id="rule4" class="rule-item"><span>District Code — characters 3 &amp; 4 are digits</span></li>
+                <li id="rule5" class="rule-item"><span>Series — characters 5 &amp; 6 are uppercase letters</span></li>
+                <li id="rule6" class="rule-item"><span>Vehicle Number — last 4 characters are digits</span></li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="made-by">Made with <span class="heart">&#10084;</span> by <strong>Ayush Aswale</strong></p>
+            <p class="prn">PRN : 24070521009</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
