@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+
+        .login-card {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 520px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #4facfe;
+        }
+
+        .constraints {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .constraints p {
+            font-size: 13px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .constraints ul {
+            margin-left: 18px;
+        }
+
+        .constraints li {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 3px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4facfe;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background: #3a8fd8;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .success {
+            color: #28a745;
+        }
+
+        .error {
+            color: #dc3545;
+        }
+
+        .footer {
+            color: #fff;
+            font-size: 14px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h2>Student Login</h2>
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="rollNumber">Roll Number</label>
+                <input type="text" id="rollNumber" placeholder="Enter roll number">
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" placeholder="Enter age">
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="text" id="mobile" placeholder="Enter 10-digit mobile number">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password">
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Re-enter password">
+            </div>
+        </div>
+
+        <div class="constraints">
+            <p>Password must contain:</p>
+            <ul>
+                <li>At least 8 characters</li>
+                <li>At least 1 uppercase letter (A-Z)</li>
+                <li>At least 1 lowercase letter (a-z)</li>
+                <li>At least 1 number (0-9)</li>
+                <li>At least 1 special character (!@#$%^&*)</li>
+            </ul>
+        </div>
+
+        <button onclick="validateLogin()">Login</button>
+        <div id="message"></div>
+    </div>
+
+    <div class="footer">
+        <p>Ayush Aswale | PRN: 24070521009</p>
+    </div>
+
+    <script>
+        function validateLogin() {
+            const name = document.getElementById('name').value.trim();
+            const rollNumber = document.getElementById('rollNumber').value.trim();
+            const age = document.getElementById('age').value.trim();
+            const mobile = document.getElementById('mobile').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const message = document.getElementById('message');
+
+            // Check if all fields are filled
+            if (name === '') {
+                message.className = 'error';
+                message.textContent = 'Please enter your name.';
+                return;
+            } else if (rollNumber === '') {
+                message.className = 'error';
+                message.textContent = 'Please enter your roll number.';
+                return;
+            } else if (age === '') {
+                message.className = 'error';
+                message.textContent = 'Please enter your age.';
+                return;
+            } else if (mobile === '') {
+                message.className = 'error';
+                message.textContent = 'Please enter your mobile number.';
+                return;
+            } else if (password === '') {
+                message.className = 'error';
+                message.textContent = 'Please enter your password.';
+                return;
+            } else if (confirmPassword === '') {
+                message.className = 'error';
+                message.textContent = 'Please confirm your password.';
+                return;
+            }
+
+            // Validate age (must be a number between 1 and 120)
+            if (isNaN(age) || age < 1 || age > 120) {
+                message.className = 'error';
+                message.textContent = 'Please enter a valid age (1-120).';
+                return;
+            }
+
+            // Validate mobile number (must be exactly 10 digits)
+            if (!/^[0-9]{10}$/.test(mobile)) {
+                message.className = 'error';
+                message.textContent = 'Mobile number must be exactly 10 digits.';
+                return;
+            }
+
+            // Check password length
+            if (password.length < 8) {
+                message.className = 'error';
+                message.textContent = 'Password must be at least 8 characters long.';
+                return;
+            }
+
+            // Check for uppercase, lowercase, number, and special character
+            if (!/[A-Z]/.test(password)) {
+                message.className = 'error';
+                message.textContent = 'Password must contain at least one uppercase letter.';
+                return;
+            } else if (!/[a-z]/.test(password)) {
+                message.className = 'error';
+                message.textContent = 'Password must contain at least one lowercase letter.';
+                return;
+            } else if (!/[0-9]/.test(password)) {
+                message.className = 'error';
+                message.textContent = 'Password must contain at least one number.';
+                return;
+            } else if (!/[!@#$%^&*]/.test(password)) {
+                message.className = 'error';
+                message.textContent = 'Password must contain at least one special character (!@#$%^&*).';
+                return;
+            }
+
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                message.className = 'error';
+                message.textContent = 'Passwords do not match.';
+                return;
+            }
+
+            // All checks passed
+            message.className = 'success';
+            message.textContent = 'Login successful! Welcome, ' + name + ' (Roll No: ' + rollNumber + ')!';
+        }
+    </script>
+</body>
+</html>
+
