@@ -260,13 +260,9 @@ JavaScript provides different types of functions and scope mechanisms that make 
 ---
 
 ## Output
+<img width="1919" height="844" alt="Screenshot 2026-08-02 232006" src="https://github.com/user-attachments/assets/a97fc792-6135-4c76-87aa-bd7cfa2bacad" />
+<img width="1919" height="968" alt="Screenshot 2026-08-02 233506" src="https://github.com/user-attachments/assets/e78ce120-800e-42e1-aaf8-0f9746fd79f4" />
 
-> **Attach the program output/screenshot.**
->
-> The screenshot must clearly display:
-> - **Student Name**
-> - **PRN**
-> - **File Path**
 
 ---
 
