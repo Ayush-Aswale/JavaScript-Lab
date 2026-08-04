@@ -367,14 +367,9 @@ input.error {
 
 ---
 
-## Output
+<img width="1919" height="970" alt="Screenshot 2026-08-02 231436" src="https://github.com/user-attachments/assets/50e77599-6686-4acf-b87b-0bd2b1f60671" />
+<img width="1919" height="972" alt="Screenshot 2026-08-02 231128" src="https://github.com/user-attachments/assets/25f3d6b1-0835-41b0-a332-6418f6743838" />
 
-> **Attach the program output/screenshot.**
->
-> The screenshot must clearly display:
-> - **Student Name**
-> - **PRN**
-> - **File Path**
 
 ---
 
