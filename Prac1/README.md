@@ -412,12 +412,8 @@ function greet() {
 
 ## Output (Case Study)
 
-> **Attach the program output/screenshot.**
->
-> The screenshot must clearly display:
-> - **Student Name**
-> - **PRN**
-> - **File Path**
+<img width="746" height="816" alt="image" src="https://github.com/user-attachments/assets/04ce2301-ddc2-454b-82a9-a3b35b067997" />
+
 
 ---
 
