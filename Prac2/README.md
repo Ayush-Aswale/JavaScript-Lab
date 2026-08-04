@@ -387,14 +387,8 @@ Destructuring extracts values from arrays or objects into separate variables.
 
 ---
 
-## Output
+<img width="605" height="586" alt="image" src="https://github.com/user-attachments/assets/1fdaa222-80c4-42df-8b2f-d5db1685086e" />
 
-> **Attach the program output/screenshot.**
->
-> The screenshot must clearly display:
-> - **Student Name**
-> - **PRN**
-> - **File Path**
 
 ---
 
