@@ -399,12 +399,8 @@ footer {
 
 ## Output
 
-> **Attach the program output/screenshot.**
->
-> The screenshot must clearly display:
-> - **Student Name**
-> - **PRN**
-> - **File Path**
+<img width="1910" height="968" alt="Screenshot 2026-08-09 203853" src="https://github.com/user-attachments/assets/48ff39fa-9ad2-4611-b8c3-9cb741144f28" />
+
 
 ---
 
@@ -626,12 +622,8 @@ footer strong {
 
 ## Output (Case Study)
 
-> **Attach the program output/screenshot.**
->
-> The screenshot must clearly display:
-> - **Student Name**
-> - **PRN**
-> - **File Path**
+<img width="1919" height="970" alt="Screenshot 2026-08-09 204222" src="https://github.com/user-attachments/assets/4e4f633d-0e33-4960-a96b-454ee906908a" />
+
 
 ---
 
