@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🛒 Your Cart</h1>
+    <p class="subtitle">Add items and see your total update</p>
+
+    <div class="add-panel">
+      <input type="text" id="itemName" placeholder="Item name" />
+      <input type="number" id="itemPrice" placeholder="Price (₹)" min="0" />
+      <input type="number" id="itemQty" placeholder="Qty" min="1" value="1" />
+      <button id="addBtn">Add Item</button>
+    </div>
+
+    <div class="cart-panel">
+      <h2>Items</h2>
+      <ul id="cartList"></ul>
+      <p id="emptyMsg" class="empty">Your cart is empty. Add some items!</p>
+    </div>
+
+    <div class="summary">
+      <div class="row">
+        <span>Subtotal</span>
+        <span id="subtotal">₹0.00</span>
+      </div>
+      <div class="row">
+        <span>Discount</span>
+        <span id="discount">-₹0.00</span>
+      </div>
+      <div class="row total">
+        <span>Total</span>
+        <span id="total">₹0.00</span>
+      </div>
+      <p id="discountNote" class="note"></p>
+    </div>
+  </div>
+
+<div></div>
+
+  <footer>
+    <p class="credit">Ayush Aswale &nbsp;|&nbsp; PRN: 24070521009</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
