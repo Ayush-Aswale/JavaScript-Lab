@@ -288,12 +288,8 @@ Regular expressions are patterns used to match character combinations in strings
 
 ## Output
 
-> **Attach the program output/screenshot.**
->
-> The screenshot must clearly display:
-> - **Student Name**
-> - **PRN**
-> - **File Path**
+<img width="1919" height="953" alt="Screenshot 2026-08-25 110831" src="https://github.com/user-attachments/assets/3b969e1e-e48c-4637-b932-7c0cec0e9fb0" />
+
 
 ---
 
@@ -530,12 +526,8 @@ button:hover {
 
 ## Output (Case Study)
 
-> **Attach the program output/screenshot.**
->
-> The screenshot must clearly display:
-> - **Student Name**
-> - **PRN**
-> - **File Path**
+<img width="1887" height="962" alt="Screenshot 2026-08-25 110900" src="https://github.com/user-attachments/assets/99421fa1-1f8e-4dcf-bc37-503ad0ff9a2a" />
+
 
 ---
 
