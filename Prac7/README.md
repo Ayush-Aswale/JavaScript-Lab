@@ -173,12 +173,8 @@ Key concepts:
 
 ## Output
 
-> **Attach the program output/screenshot.**
->
-> The screenshot must clearly display:
-> - **Student Name**
-> - **PRN**
-> - **File Path**
+<img width="1912" height="566" alt="Screenshot 2026-09-01 102832" src="https://github.com/user-attachments/assets/055488dd-7e0d-4737-ac7b-34ec595e9371" />
+
 
 ---
 
@@ -741,12 +737,8 @@ button[type="submit"]:hover {
 
 ## Output (Case Study)
 
-> **Attach the program output/screenshot.**
->
-> The screenshot must clearly display:
-> - **Student Name**
-> - **PRN**
-> - **File Path**
+<img width="1897" height="937" alt="Screenshot 2026-09-01 103815" src="https://github.com/user-attachments/assets/9f32a95a-6816-4ef2-9a50-aec6bccadb71" />
+
 
 ---
 
