@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case Study Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <main class="paper-form">
+        <h1>Case Study:-</h1>
+
+        <form id="userForm" novalidate>
+          <div class="mandatory">*Mandatory to fill</div>
+
+          <div class="field-row">
+            <label for="firstName">Firstname:</label>
+            <div class="input-wrap">
+              <input id="firstName" name="firstName" type="text" data-required />
+              <span class="field-star">*</span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <label for="lastName">Lastname:</label>
+            <div class="input-wrap">
+              <input id="lastName" name="lastName" type="text" data-required />
+              <span class="field-star">*</span>
+            </div>
+          </div>
+
+          <div class="field-row birthday-row">
+            <label for="day">Birthday:</label>
+            <div class="date-wrap">
+              <div class="select-wrap">
+                <select id="day" name="day" data-required>
+                  <option value="">Day</option>
+                </select>
+              </div>
+
+              <div class="select-wrap">
+                <select id="month" name="month" data-required>
+                  <option value="">Month</option>
+                </select>
+              </div>
+
+              <div class="select-wrap">
+                <select id="year" name="year" data-required>
+                  <option value="">Year</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <label for="username">Username:</label>
+            <div class="input-wrap">
+              <input id="username" name="username" type="text" data-required />
+              <span class="field-star">*</span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <label for="email">E-mail:</label>
+            <div class="input-wrap">
+              <input id="email" name="email" type="email" data-required />
+              <span class="field-star">*</span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <label for="website">Website:</label>
+            <div class="input-wrap">
+              <input id="website" name="website" type="url" />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <label for="password">Password:</label>
+            <div class="input-wrap">
+              <input id="password" name="password" type="password" data-required />
+              <span class="field-star">*</span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <label for="confirmPassword">Re-password:</label>
+            <div class="input-wrap">
+              <input id="confirmPassword" name="confirmPassword" type="password" data-required />
+              <span class="field-star">*</span>
+            </div>
+          </div>
+
+          <div class="terms-row">
+            <input id="terms" name="terms" type="checkbox" data-required />
+            <label class="terms-label" for="terms">I agree to the terms &amp; conditions.</label>
+          </div>
+
+          <div class="submit-row">
+            <button type="submit" form="userForm">Submit</button>
+          </div>
+        </form>
+
+        <footer class="site-footer">
+          <p>Name: Ayush Aswale</p>
+          <p>PRN: 24070521009</p>
+        </footer>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
