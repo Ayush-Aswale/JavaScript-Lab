@@ -288,12 +288,8 @@ Both APIs provide similar methods:
 
 ## Output
 
-> **Attach the program output/screenshot.**
->
-> The screenshot must clearly display:
-> - **Student Name**
-> - **PRN**
-> - **File Path**
+<img width="1916" height="960" alt="Screenshot 2026-09-21 093130" src="https://github.com/user-attachments/assets/dedad1ba-26dd-45cc-aedd-43b0458f0413" />
+
 
 ---
 
@@ -679,12 +675,8 @@ Both APIs provide similar methods:
 
 ## Output (Case Study)
 
-> **Attach the program output/screenshot.**
->
-> The screenshot must clearly display:
-> - **Student Name**
-> - **PRN**
-> - **File Path**
+<img width="1901" height="968" alt="Screenshot 2026-09-21 093333" src="https://github.com/user-attachments/assets/200973d5-ba5b-4ecb-a9e2-abf8139ab06e" />
+
 
 ---
 
