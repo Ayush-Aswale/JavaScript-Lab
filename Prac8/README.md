@@ -245,12 +245,8 @@ document.getElementById("gymForm").addEventListener("submit", function(e){
 
 ## Output
 
-> **Attach the program output/screenshot.**
->
-> The screenshot must clearly display:
-> - **Student Name**
-> - **PRN**
-> - **File Path**
+<img width="1917" height="970" alt="Screenshot 2026-09-15 110824" src="https://github.com/user-attachments/assets/9cafbc2e-2dc2-4c9c-a66b-6a3e0d782e5f" />
+
 
 ---
 
@@ -629,12 +625,8 @@ button span {
 
 ## Output (Case Study)
 
-> **Attach the program output/screenshot.**
->
-> The screenshot must clearly display:
-> - **Student Name**
-> - **PRN**
-> - **File Path**
+<img width="1901" height="962" alt="Screenshot 2026-09-15 110605" src="https://github.com/user-attachments/assets/247a5ee9-1210-4562-a17d-f86d330b5d27" />
+
 
 ---
 
