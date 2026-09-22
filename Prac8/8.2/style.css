@@ -1,0 +1,250 @@
+:root {
+  --ink: #17211d;
+  --muted: #68736e;
+  --paper: #f4f1e9;
+  --panel: #fffdf8;
+  --line: #d9ddd3;
+  --accent: #d8fa55;
+  --accent-dark: #a6c52d;
+  --shadow: 0 24px 60px rgba(37, 47, 38, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "DM Sans", sans-serif;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  opacity: 0.5;
+  background-image: radial-gradient(#c6cdbf 0.8px, transparent 0.8px);
+  background-size: 18px 18px;
+}
+
+.page-shell {
+  max-width: 760px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h2 {
+  margin: 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.form-panel {
+  width: 100%;
+  align-self: center;
+  padding: clamp(32px, 5vw, 64px);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.student-footer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 0 4px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.section-label {
+  margin: 0 0 8px;
+  color: var(--accent-dark);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.form-heading {
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px 20px;
+}
+
+.field-group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+label,
+legend {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--ink);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  outline: 0;
+  color: var(--ink);
+  background: transparent;
+  font: inherit;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+select {
+  cursor: pointer;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: var(--accent-dark);
+  box-shadow: 0 0 0 3px rgba(216, 250, 85, 0.35);
+}
+
+.field-hint {
+  margin: -3px 0 13px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.option-row {
+  display: flex;
+  gap: 8px;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 76px;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.choice:has(input:checked) {
+  border-color: var(--ink);
+  color: var(--ink);
+  background: var(--accent);
+}
+
+.choice input {
+  accent-color: var(--ink);
+}
+
+button {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 58px;
+  margin-top: 8px;
+  padding: 0 20px;
+  border: 0;
+  color: var(--ink);
+  background: var(--accent);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+button:hover {
+  background: #c8ea45;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button span {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.form-message {
+  grid-column: 1 / -1;
+  min-height: 1.2em;
+  margin: -10px 0 0;
+  color: var(--accent-dark);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+@media (max-width: 780px) {
+  .page-shell {
+    padding: 20px;
+  }
+
+  .form-panel {
+    padding: 36px 28px;
+  }
+}
+
+@media (max-width: 520px) {
+  .page-shell {
+    padding: 0;
+  }
+
+  .form-panel {
+    box-shadow: none;
+  }
+
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: auto;
+  }
+
+  button,
+  .form-message {
+    grid-column: auto;
+  }
+}
