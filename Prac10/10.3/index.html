@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Load JSON using Fetch</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        form {
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: end;
+        }
+
+        label {
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 8px;
+            margin-top: 5px;
+            min-width: 140px;
+        }
+
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 70%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 15px;
+            border-top: 1px solid #ccc;
+            font-size: 14px;
+            color: #555;
+            font-weight: 600;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h2>Student Details using fetch()</h2>
+
+    <form id="studentForm">
+        <label>
+            ID:
+            <input type="number" id="studentId" required>
+        </label>
+        <label>
+            Name:
+            <input type="text" id="studentName" required>
+        </label>
+        <label>
+            Department:
+            <input type="text" id="studentDepartment" required>
+        </label>
+        <label>
+            Marks:
+            <input type="number" id="studentMarks" required min="0" max="100">
+        </label>
+        <button type="submit">Add Student</button>
+    </form>
+
+    <button type="button" onclick="loadStudents()">Clear Students</button>
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+    </table>
+
+    <footer>
+        <p>Submitted by: <strong>Ayush Aswale</strong> | PRN: <strong>24070521009</strong></p>
+    </footer>
+
+    <script>
+        let students = [];
+
+        function renderStudents(data) {
+            let tableBody = document.querySelector("#studentTable tbody");
+            tableBody.innerHTML = "";
+
+            data.forEach(student => {
+                let row = `
+                    <tr>
+                        <td>${student.id}</td>
+                        <td>${student.name}</td>
+                        <td>${student.department}</td>
+                        <td>${student.marks}</td>
+                    </tr>
+                `;
+
+                tableBody.innerHTML += row;
+            });
+        }
+
+        function loadStudents() {
+            students = [];
+            renderStudents(students);
+        }
+
+        document.getElementById("studentForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const student = {
+                id: Number(document.getElementById("studentId").value),
+                name: document.getElementById("studentName").value.trim(),
+                department: document.getElementById("studentDepartment").value.trim(),
+                marks: Number(document.getElementById("studentMarks").value)
+            };
+
+            if (!student.name || !student.department || Number.isNaN(student.id) || Number.isNaN(student.marks)) {
+                alert("Please enter valid student details.");
+                return;
+            }
+
+            students.push(student);
+            renderStudents(students);
+            event.target.reset();
+        });
+    </script>
+
+</body>
+
+</html>

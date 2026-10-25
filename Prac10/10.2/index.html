@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Load JSON using Fetch</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 70%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 15px;
+            border-top: 1px solid #ccc;
+            font-size: 14px;
+            color: #555;
+            font-weight: 600;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h2>Student Details using fetch()</h2>
+
+    <button type="button" onclick="loadStudents()">See Students</button>
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+    </table>
+
+    <footer>
+        <p>Submitted by: <strong>Ayush Aswale</strong> | PRN: <strong>24070521009</strong></p>
+    </footer>
+
+    <script>
+        let students = [];
+
+        function renderStudents(data) {
+            let tableBody = document.querySelector("#studentTable tbody");
+            tableBody.innerHTML = "";
+
+            data.forEach(student => {
+                let row = `
+                    <tr>
+                        <td>${student.id}</td>
+                        <td>${student.name}</td>
+                        <td>${student.department}</td>
+                        <td>${student.marks}</td>
+                    </tr>
+                `;
+
+                tableBody.innerHTML += row;
+            });
+        }
+
+        // Fallback data in case the file is opened directly via file:// where browser blocks fetch()
+        const fallbackStudents = [
+            { id: 1, name: "Rahul", department: "CSE", marks: 85 },
+            { id: 2, name: "Priya", department: "AIML", marks: 92 },
+            { id: 3, name: "Amit", department: "Data Science", marks: 88 }
+        ];
+
+        function loadStudents() {
+            fetch("students.json")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("HTTP error " + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    students = data;
+                    renderStudents(students);
+                })
+                .catch(error => {
+                    console.warn("Fetch failed (often due to opening file directly via file:// instead of a local server):", error);
+                    // Try XMLHttpRequest as secondary attempt, or load fallback data
+                    try {
+                        const xhr = new XMLHttpRequest();
+                        xhr.open("GET", "students.json", true);
+                        xhr.onload = function () {
+                            if (xhr.status === 200 || (xhr.status === 0 && xhr.responseText)) {
+                                students = JSON.parse(xhr.responseText);
+                                renderStudents(students);
+                            } else {
+                                students = fallbackStudents;
+                                renderStudents(students);
+                            }
+                        };
+                        xhr.onerror = function () {
+                            students = fallbackStudents;
+                            renderStudents(students);
+                        };
+                        xhr.send();
+                    } catch (e) {
+                        students = fallbackStudents;
+                        renderStudents(students);
+                    }
+                });
+        }
+    </script>
+
+</body>
+
+</html>
