@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Task & Live Updates Dashboard | Practical 12</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Top Header & Live Status Bar -->
+        <header>
+            <div class="title-area">
+                <h1>Interactive Task & Live Updates Dashboard</h1>
+                <p>HTML &bull; CSS &bull; JavaScript &bull; jQuery &bull; localStorage &bull; AJAX API &bull; Periodic Auto-Refresh</p>
+            </div>
+            <div class="status-area">
+                <span class="polling-badge" id="pollingBadge">
+                    <span class="pulse-indicator"></span>
+                    <span id="pollingStatusText">Live Sync (15s)</span>
+                </span>
+                <div class="timer-box" id="nextSyncTimer">Next sync: 15s</div>
+            </div>
+        </header>
+
+        <!-- Dynamic Overview Metrics Banner -->
+        <section class="metrics-banner">
+            <div class="metric-card">
+                <span class="metric-number" id="metricTotalTasks">0</span>
+                <span class="metric-label">Total Tasks</span>
+            </div>
+            <div class="metric-card m-pending">
+                <span class="metric-number" id="metricPendingTasks" style="color: var(--warning);">0</span>
+                <span class="metric-label">Pending</span>
+            </div>
+            <div class="metric-card m-completed">
+                <span class="metric-number" id="metricCompletedTasks" style="color: var(--success);">0</span>
+                <span class="metric-label">Completed</span>
+            </div>
+            <div class="metric-card m-updates">
+                <span class="metric-number" id="metricUpdatesCount" style="color: var(--purple);">0</span>
+                <span class="metric-label">Updates Received</span>
+            </div>
+        </section>
+
+        <!-- Task Completion Rate Progress Bar -->
+        <section class="progress-card">
+            <div class="progress-header">
+                <span>Task Completion Rate</span>
+                <span id="progressPercentageText">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="taskProgressBar"></div>
+            </div>
+        </section>
+
+        <!-- Two-Column Main Dashboard Grid -->
+        <main class="dashboard-grid">
+
+            <!-- ============================================== -->
+            <!-- LEFT COLUMN: Interactive Task Management Panel -->
+            <!-- ============================================== -->
+            <section class="dashboard-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">
+                        <span>📝</span> Task Management
+                    </h2>
+                    <div class="panel-actions">
+                        <button type="button" id="btnClearCompleted" class="btn btn-secondary" title="Remove completed tasks">
+                            🧹 Clear Completed
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Add Task Form (jQuery .on('submit')) -->
+                <div class="form-card">
+                    <form id="taskForm">
+                        <div class="form-grid">
+                            <div class="form-group" style="grid-column: span 2;">
+                                <label for="taskTitle">Task Description</label>
+                                <input type="text" id="taskTitle" name="taskTitle" placeholder="e.g. Implement WebSocket live sync in node" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="taskCategory">Category</label>
+                                <select id="taskCategory" name="taskCategory" required>
+                                    <option value="Development">💻 Development</option>
+                                    <option value="Research">🔬 Research</option>
+                                    <option value="Design">🎨 UI/UX Design</option>
+                                    <option value="Review">📋 Code Review</option>
+                                    <option value="Deployment">🚀 Deployment</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="taskPriority">Priority</label>
+                                <select id="taskPriority" name="taskPriority" required>
+                                    <option value="High">🔴 High Priority</option>
+                                    <option value="Medium" selected>🟡 Medium Priority</option>
+                                    <option value="Low">🟢 Low Priority</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-actions-row">
+                            <button type="submit" class="btn btn-primary">➕ Add Task</button>
+                            <button type="button" id="btnResetTasks" class="btn btn-secondary">🔄 Reset Default Tasks</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Toolbar: Filter Chips & Search Input -->
+                <div class="toolbar">
+                    <div class="filter-group" id="taskFilters">
+                        <button type="button" class="filter-chip active" data-filter="all">All</button>
+                        <button type="button" class="filter-chip" data-filter="pending">Pending</button>
+                        <button type="button" class="filter-chip" data-filter="completed">Completed</button>
+                        <button type="button" class="filter-chip" data-filter="High">High</button>
+                    </div>
+                    <input type="text" id="taskSearchInput" class="search-field" placeholder="🔍 Search tasks...">
+                </div>
+
+                <!-- Task List Container (Manipulated via jQuery DOM methods) -->
+                <div class="task-list" id="taskList">
+                    <!-- Populated dynamically by script.js from localStorage -->
+                </div>
+            </section>
+
+            <!-- ================================================= -->
+            <!-- RIGHT COLUMN: Live Updates Feed (AJAX & Polling)  -->
+            <!-- ================================================= -->
+            <section class="dashboard-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">
+                        <span>📡</span> Live Updates & Server Feed
+                    </h2>
+                    <div class="panel-actions">
+                        <button type="button" id="btnManualRefresh" class="btn btn-purple">
+                            <span>🔄</span> Refresh Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Feed Controls Bar -->
+                <div class="feed-controls">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <button type="button" id="btnToggleAutoRefresh" class="btn btn-secondary">
+                            ⏸️ Pause Auto-Refresh
+                        </button>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <span style="font-size: 11px; color: var(--text-muted);">Interval:</span>
+                        <select id="selectInterval" class="interval-selector">
+                            <option value="10">10 seconds</option>
+                            <option value="15" selected>15 seconds</option>
+                            <option value="30">30 seconds</option>
+                            <option value="60">60 seconds</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Dynamic Updates Container (Populated by AJAX via jQuery) -->
+                <div class="updates-list" id="updatesFeed">
+                    <!-- Cards created dynamically by script.js from remote JSON API -->
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Practical 12: Interactive Task and Live Updates Dashboard</p>
+            <p>Submitted by: <strong>Ayush Aswale</strong> | PRN: <strong>24070521009</strong></p>
+        </footer>
+
+    </div>
+
+    <!-- Toast Notifications Center -->
+    <div class="toast-box" id="toastContainer"></div>
+
+    <!-- Application Logic -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

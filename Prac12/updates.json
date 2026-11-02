@@ -1,0 +1,34 @@
+[
+    {
+        "id": 101,
+        "title": "Database Optimization & Indexing Completed",
+        "body": "Periodic vacuuming and automated indexing have completed successfully across all distributed cluster nodes. Query response latency reduced by 28%.",
+        "category": "Database",
+        "author": "DevOps Automated Bot",
+        "timestamp": "2026-11-02T06:30:00.000Z"
+    },
+    {
+        "id": 102,
+        "title": "Security Patch v2.4.1 Deployed to Production",
+        "body": "Security hotfix addressing cross-origin resource sharing headers and session invalidation tokens has been applied. All services operating normally.",
+        "category": "Security",
+        "author": "SecOps Lead",
+        "timestamp": "2026-11-02T06:40:00.000Z"
+    },
+    {
+        "id": 103,
+        "title": "Continuous Integration Pipeline Build Succeeded",
+        "body": "Pipeline #4812 passed all unit and integration test suites. Docker image generated and tagged for release candidate staging.",
+        "category": "CI/CD",
+        "author": "Build Engineer",
+        "timestamp": "2026-11-02T06:45:00.000Z"
+    },
+    {
+        "id": 104,
+        "title": "API Gateway Rate Limiting Threshold Adjusted",
+        "body": "Upstream rate limit raised to 2,500 requests per minute per IP to accommodate peak traffic during semester exams and assignment submissions.",
+        "category": "Infrastructure",
+        "author": "Site Reliability Eng",
+        "timestamp": "2026-11-02T06:48:00.000Z"
+    }
+]
