@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Portal | Class Scheduler & Student Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- jQuery Library (Used for Task Manager DOM manipulation, events, animations, & AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Top Navigation Tab Switcher -->
+        <nav class="tab-navigation">
+            <button type="button" class="tab-btn active" id="tabSchedulerBtn" data-target="viewScheduler">
+                <span>⏰</span> Class Scheduler (Timers & Countdown)
+            </button>
+            <button type="button" class="tab-btn" id="tabTaskManagerBtn" data-target="viewTaskManager">
+                <span>📋</span> Student Task Manager (jQuery & AJAX)
+            </button>
+        </nav>
+
+        <!-- ========================================================= -->
+        <!-- VIEW 1: Class Scheduler (setInterval, setTimeout, Timers) -->
+        <!-- ========================================================= -->
+        <main class="practical-view active-view" id="viewScheduler">
+
+            <!-- Top Header & Real-time Live Clock -->
+            <header>
+                <div class="title-area">
+                    <h1>Class Scheduler</h1>
+                    <p>Real-Time Countdown &bull; setInterval() Loop &bull; setTimeout() Reminders</p>
+                </div>
+                <div class="clock-area">
+                    <div class="live-clock" id="currentClock">00:00:00</div>
+                    <div class="live-date" id="currentDate">Loading date...</div>
+                </div>
+            </header>
+
+            <!-- Dynamic Real-time Countdown Banner -->
+            <section class="countdown-hero" id="heroCountdown">
+                <div class="hero-status-row">
+                    <span class="status-badge badge-upcoming" id="heroBadge">
+                        <span class="pulse-dot"></span>
+                        <span id="heroStatusText">NEXT UPCOMING CLASS</span>
+                    </span>
+                    <span class="hero-timing-tag" id="heroTiming">Today</span>
+                </div>
+
+                <div class="hero-main-content">
+                    <div class="hero-details">
+                        <h2 id="heroTitle">Loading schedule...</h2>
+                        <div class="hero-meta">
+                            <span id="heroTeacher">👤 Instructor</span>
+                            <span id="heroRoom">📍 Room</span>
+                        </div>
+                    </div>
+
+                    <div class="countdown-digits">
+                        <div class="digit-unit">
+                            <span class="digit-value" id="hoursVal">00</span>
+                            <span class="digit-label">Hours</span>
+                        </div>
+                        <span class="digit-separator">:</span>
+                        <div class="digit-unit">
+                            <span class="digit-value" id="minutesVal">00</span>
+                            <span class="digit-label">Minutes</span>
+                        </div>
+                        <span class="digit-separator">:</span>
+                        <div class="digit-unit">
+                            <span class="digit-value" id="secondsVal">00</span>
+                            <span class="digit-label">Seconds</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Add Class Schedule Form -->
+            <section class="card-panel">
+                <h3 class="section-title">Schedule New Class</h3>
+                <form id="classForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="subject">Subject / Course Name</label>
+                            <input type="text" id="subject" name="subject" placeholder="e.g. Operating Systems" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="teacher">Instructor Name</label>
+                            <input type="text" id="teacher" name="teacher" placeholder="e.g. Dr. A. Sharma" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="room">Classroom / Lab</label>
+                            <input type="text" id="room" name="room" placeholder="e.g. Room 402" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="day">Day of Week</label>
+                            <select id="day" name="day" required>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="startTime">Start Time</label>
+                            <input type="time" id="startTime" name="startTime" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="endTime">End Time</label>
+                            <input type="time" id="endTime" name="endTime" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">➕ Add to Schedule</button>
+                        <button type="button" id="resetBtn" class="btn btn-secondary">🔄 Reset Default Timetable</button>
+                        <button type="button" id="testReminderBtn" class="btn btn-secondary">⏰ Test setTimeout() Reminder (5s)</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Scheduled Classes Timetable List -->
+            <section class="card-panel">
+                <div class="section-title">
+                    <span>Timetable Schedule</span>
+                    <span id="classCount" style="font-size: 13px; color: var(--primary);">0 Classes</span>
+                </div>
+                <div class="schedule-list" id="classList">
+                    <!-- Populated dynamically by script.js -->
+                </div>
+            </section>
+
+        </main>
+
+        <!-- ====================================================================== -->
+        <!-- VIEW 2: Student Task Manager (jQuery, DOM, Events, Local Storage, AJAX) -->
+        <!-- ====================================================================== -->
+        <main class="practical-view" id="viewTaskManager">
+
+            <!-- Task Manager Header -->
+            <header>
+                <div class="title-area">
+                    <h1>Student Task Manager</h1>
+                    <p>jQuery &bull; DOM Manipulation &bull; Event Handling &bull; localStorage &bull; AJAX ($.ajax)</p>
+                </div>
+                <div class="clock-area">
+                    <button type="button" id="btnLoadAjax" class="btn btn-ajax">
+                        <span>📥</span> Load Tasks via AJAX
+                    </button>
+                </div>
+            </header>
+
+            <!-- Real-Time Metrics & Progress -->
+            <div class="stats-banner">
+                <div class="stat-box">
+                    <span class="stat-num" id="totalTasksCount">0</span>
+                    <span class="stat-lbl">Total Tasks</span>
+                </div>
+                <div class="stat-box box-pending">
+                    <span class="stat-num" id="pendingTasksCount" style="color: var(--warning);">0</span>
+                    <span class="stat-lbl">Pending</span>
+                </div>
+                <div class="stat-box box-completed">
+                    <span class="stat-num" id="completedTasksCount" style="color: var(--success);">0</span>
+                    <span class="stat-lbl">Completed</span>
+                </div>
+            </div>
+
+            <!-- Task Completion Progress Bar -->
+            <div class="task-progress-wrap">
+                <div class="progress-header">
+                    <span>Overall Completion Rate</span>
+                    <span id="taskProgressPercent">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="taskProgressBar"></div>
+                </div>
+            </div>
+
+            <!-- Add Task Form (jQuery .on('submit')) -->
+            <section class="card-panel">
+                <h3 class="section-title">Create New Task / Assignment</h3>
+                <form id="taskForm">
+                    <div class="form-grid">
+                        <div class="form-group" style="grid-column: span 2;">
+                            <label for="taskTitle">Task / Assignment Title</label>
+                            <input type="text" id="taskTitle" name="taskTitle" placeholder="e.g. Implement Dijkstra Algorithm in C++" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskCourse">Subject / Course</label>
+                            <input type="text" id="taskCourse" name="taskCourse" placeholder="e.g. Design & Analysis of Algorithms" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskDueDate">Due Date</label>
+                            <input type="date" id="taskDueDate" name="taskDueDate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskPriority">Priority Level</label>
+                            <select id="taskPriority" name="taskPriority" required>
+                                <option value="High">🔴 High Priority</option>
+                                <option value="Medium" selected>🟡 Medium Priority</option>
+                                <option value="Low">🟢 Low Priority</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">➕ Add Task</button>
+                        <button type="button" id="btnClearCompleted" class="btn btn-secondary">🧹 Clear Completed</button>
+                        <button type="button" id="btnResetTasks" class="btn btn-secondary">🔄 Reset Default Tasks</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Task List & Search/Filter Toolbar -->
+            <section class="card-panel">
+                <div class="toolbar-wrap">
+                    <!-- Event Filters (jQuery .click()) -->
+                    <div class="filter-group" id="taskFilters">
+                        <button type="button" class="filter-chip active" data-filter="all">All Tasks</button>
+                        <button type="button" class="filter-chip" data-filter="pending">Pending</button>
+                        <button type="button" class="filter-chip" data-filter="completed">Completed</button>
+                        <button type="button" class="filter-chip" data-filter="High">High Priority</button>
+                    </div>
+
+                    <!-- Search Input (jQuery .on('input')) -->
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="taskSearchInput" placeholder="Search tasks or courses...">
+                    </div>
+                </div>
+
+                <!-- Dynamic Task Cards Container (Manipulated via jQuery) -->
+                <div id="taskList">
+                    <!-- Rendered dynamically by script.js -->
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Practical 11 | Class Scheduler & Student Task Manager</p>
+            <p>Submitted by: <strong>Ayush Aswale</strong> | PRN: <strong>24070521009</strong></p>
+        </footer>
+
+    </div>
+
+    <!-- Toast Notifications Center -->
+    <div class="toast-box" id="toastContainer"></div>
+
+    <!-- Application Script -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

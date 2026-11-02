@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Task Manager | Practical 11.1</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Top Navigation -->
+        <nav class="tab-navigation">
+            <a href="index.html" class="tab-btn" style="text-decoration: none;">
+                <span>⏰</span> Switch to Class Scheduler
+            </a>
+            <button type="button" class="tab-btn active">
+                <span>📋</span> Student Task Manager
+            </button>
+        </nav>
+
+        <!-- Main Task Manager View -->
+        <main class="practical-view active-view" id="viewTaskManager">
+
+            <!-- Task Manager Header -->
+            <header>
+                <div class="title-area">
+                    <h1>Student Task Manager</h1>
+                    <p>JavaScript &bull; jQuery &bull; DOM Manipulation &bull; Events &bull; Local Storage &bull; AJAX</p>
+                </div>
+                <div class="clock-area">
+                    <button type="button" id="btnLoadAjax" class="btn btn-ajax">
+                        <span>📥</span> Load Tasks via AJAX
+                    </button>
+                </div>
+            </header>
+
+            <!-- Real-Time Metrics & Progress -->
+            <div class="stats-banner">
+                <div class="stat-box">
+                    <span class="stat-num" id="totalTasksCount">0</span>
+                    <span class="stat-lbl">Total Tasks</span>
+                </div>
+                <div class="stat-box box-pending">
+                    <span class="stat-num" id="pendingTasksCount" style="color: var(--warning);">0</span>
+                    <span class="stat-lbl">Pending</span>
+                </div>
+                <div class="stat-box box-completed">
+                    <span class="stat-num" id="completedTasksCount" style="color: var(--success);">0</span>
+                    <span class="stat-lbl">Completed</span>
+                </div>
+            </div>
+
+            <!-- Task Completion Progress Bar -->
+            <div class="task-progress-wrap">
+                <div class="progress-header">
+                    <span>Overall Completion Rate</span>
+                    <span id="taskProgressPercent">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="taskProgressBar"></div>
+                </div>
+            </div>
+
+            <!-- Add Task Form -->
+            <section class="card-panel">
+                <h3 class="section-title">Create New Task / Assignment</h3>
+                <form id="taskForm">
+                    <div class="form-grid">
+                        <div class="form-group" style="grid-column: span 2;">
+                            <label for="taskTitle">Task / Assignment Title</label>
+                            <input type="text" id="taskTitle" name="taskTitle" placeholder="e.g. Implement Dijkstra Algorithm in C++" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskCourse">Subject / Course</label>
+                            <input type="text" id="taskCourse" name="taskCourse" placeholder="e.g. Design & Analysis of Algorithms" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskDueDate">Due Date</label>
+                            <input type="date" id="taskDueDate" name="taskDueDate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskPriority">Priority Level</label>
+                            <select id="taskPriority" name="taskPriority" required>
+                                <option value="High">🔴 High Priority</option>
+                                <option value="Medium" selected>🟡 Medium Priority</option>
+                                <option value="Low">🟢 Low Priority</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">➕ Add Task</button>
+                        <button type="button" id="btnClearCompleted" class="btn btn-secondary">🧹 Clear Completed</button>
+                        <button type="button" id="btnResetTasks" class="btn btn-secondary">🔄 Reset Default Tasks</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Task List & Search/Filter Toolbar -->
+            <section class="card-panel">
+                <div class="toolbar-wrap">
+                    <div class="filter-group" id="taskFilters">
+                        <button type="button" class="filter-chip active" data-filter="all">All Tasks</button>
+                        <button type="button" class="filter-chip" data-filter="pending">Pending</button>
+                        <button type="button" class="filter-chip" data-filter="completed">Completed</button>
+                        <button type="button" class="filter-chip" data-filter="High">High Priority</button>
+                    </div>
+
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="taskSearchInput" placeholder="Search tasks or courses...">
+                    </div>
+                </div>
+
+                <!-- Dynamic Task Cards Container -->
+                <div id="taskList"></div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Practical 11.1 | Student Task Manager</p>
+            <p>Submitted by: <strong>Ayush Aswale</strong> | PRN: <strong>24070521009</strong></p>
+        </footer>
+
+    </div>
+
+    <!-- Toast Notifications Center -->
+    <div class="toast-box" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,238 @@
+/*
+ * style.css - Styling for Smart India Hackathon Information Web Page
+ * Clean, structured design with navigation bar, text formatting, and responsive layout
+ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f1f5f9;
+    color: #334155;
+    line-height: 1.6;
+}
+
+/* Navigation Bar */
+.navbar {
+    background: linear-gradient(90deg, #1e3a8a 0%, #0369a1 100%);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+}
+
+.nav-logo {
+    color: #ffffff;
+    font-size: 19px;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-links li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+/* Hero Banner */
+.hero-banner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0369a1 100%);
+    color: #ffffff;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.banner-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-banner h1 {
+    font-size: 32px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.tagline {
+    font-size: 15px;
+    color: #93c5fd;
+    font-weight: 500;
+}
+
+/* Page Container */
+.page-container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 16px;
+}
+
+/* Content Sections */
+.content-section {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+}
+
+.section-heading {
+    color: #1e3a8a;
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.divider {
+    border: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0284c7 0%, #e2e8f0 100%);
+    margin-bottom: 18px;
+}
+
+/* Styled Lists */
+.styled-list {
+    margin-left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Highlight Stats Grid */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 12px 0;
+}
+
+.stat-card {
+    background: #f8fafc;
+    border-left: 4px solid #0284c7;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.stat-number {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #0369a1;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+/* Table Styling */
+.placement-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.placement-table th,
+.placement-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 14px;
+}
+
+.placement-table th {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    font-weight: bold;
+}
+
+.placement-table tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Contact Grid */
+.contact-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+.contact-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.contact-item h4 {
+    color: #1e3a8a;
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+.contact-item p {
+    font-size: 13px;
+    color: #475569;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 24px 10px;
+    color: #64748b;
+    font-size: 13px;
+    border-top: 1px solid #cbd5e1;
+    margin-top: 30px;
+}
+
+footer strong {
+    color: #1e293b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 650px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .hero-banner h1 {
+        font-size: 24px;
+    }
+}
